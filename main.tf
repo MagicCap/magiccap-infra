@@ -12,14 +12,14 @@ resource "digitalocean_kubernetes_cluster" "k8s-prod" {
 }
 
 // Release bucket + CDN
-resource "digitaloean_spaces_bucket" "release-data" {
+resource "digitalocean_spaces_bucket" "release-data" {
   name = "magiccap-spaces-nyc3-1"
   region = "nyc3"
   acl = "public-read"
 }
 
 resource "digitalocean_cdn" "release-cdn" {
-  origin = "${digitaloean_spaces_bucket.release-data.bucket_domain_name}"
+  origin = "${digitalocean_spaces_bucket.release-data.bucket_domain_name}"
 }
 
 output "fqdn" {
